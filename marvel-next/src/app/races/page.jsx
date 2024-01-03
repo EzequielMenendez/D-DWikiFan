@@ -18,7 +18,6 @@ export default async function Characters() {
             {data.map((d)=>(
                 <div key={d.index}>
                     <RaceCard data={d}/>
-                    <button>Description</button>
                 </div>
             ))}
         </div>
