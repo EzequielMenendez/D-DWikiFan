@@ -1,5 +1,6 @@
-import RaceCard from "@/components/raceCard"
+import RaceCard from "@/components/RaceCard/RaceCard"
 import axios from "axios"
+import { StyledDiv } from "./styledRaces"
 
 const loadRaces = async() =>{
     try {
@@ -13,13 +14,13 @@ const loadRaces = async() =>{
 export default async function Characters() {
     const data = await loadRaces()
     return(
-        <div>
+        <StyledDiv>
             <h3>Races</h3>
             {data.map((d)=>(
                 <div key={d.index}>
                     <RaceCard data={d}/>
                 </div>
             ))}
-        </div>
+        </StyledDiv>
     )
 }

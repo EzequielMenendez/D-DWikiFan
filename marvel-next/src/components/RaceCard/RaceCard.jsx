@@ -1,12 +1,14 @@
 "use client"
 import Link from "next/link"
+import { StyledDiv } from "./styledRCard"
 
 function RaceCard({data}) {
   return (
-    <div>
+    <Link href={`/races/${data.index}`}>
+      <StyledDiv>
         <h4>{data.name}</h4>
-        <Link href={`/races/${data.index}`}>Description</Link>
-    </div>
+      </StyledDiv>
+    </Link>
   )
 }
 
