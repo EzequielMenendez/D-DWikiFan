@@ -87,8 +87,15 @@ async function RaceDetail({params}) {
                             <div key={sub.name}>
                                 <h4>{sub.name}</h4>
                                 <p>{sub.data.desc}</p>
-                                {sub.data.language_options ? (
-                                    <p>When choosing this subrace, you learn a language of your choice.</p>
+                                {sub.data.starting_proficiencies.length ? (
+                                    <div>
+                                        <h5>Starting Proficiencies</h5>
+                                        <ul>
+                                        {sub.data.starting_proficiencies.map(pro=>(
+                                            <li key={pro.index}>{pro.name}</li>
+                                        ))}
+                                        </ul>
+                                    </div>
                                 ) : null}
                                 {sub.data.ability_bonuses.length ? (
                                     <div>
