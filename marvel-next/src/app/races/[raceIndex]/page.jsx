@@ -12,7 +12,16 @@ const loadRace = async(index)=>{
                 return
             });
 
-            data.desc_traits = await Promise.all(traitsPromises);
+            await Promise.all(traitsPromises);
+        }
+        if(data.subraces.length) {
+            const subracesPromises = data.subraces.map(async (sub) => {
+                const response = await axios.get(`https://www.dnd5eapi.co${sub.url}`);
+                sub.data = response.data;
+                return
+            });
+
+            await Promise.all(subracesPromises);
         }
         return data
     } catch (error) {
@@ -50,14 +59,43 @@ async function RaceDetail({params}) {
                 <p>When you choose this race, you increase these ability scores:</p>
                 <ul>
                     {race.ability_bonuses?.map(ability=>(
-                        <li>{scoreTranslation[ability.ability_score.name]} in {ability.bonus}</li>
+                        <li key={ability.ability_score.name}>{scoreTranslation[ability.ability_score.name]} in {ability.bonus}</li>
                     ))}
                 </ul>
+                {race.starting_proficiencies.length ? (
+                    <div>
+                        <h4>Starting Proficiencies</h4>
+                        <ul>
+                            {race.starting_proficiencies.map(pro=>(
+                                <li key={pro.index}>{pro.name}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : null}
                 {race.traits.length ? (
                     <div>
                         <h4>Traits</h4>
                         {race.traits.map(trait => (
                             <p key={trait.name}>{trait.name}: {trait.desc}</p>
+                        ))}
+                    </div>
+                ) : null}
+                {race.subraces.length ? (
+                    <div>
+                        <h3>Subrace</h3>
+                        {race.subraces.map(sub=>(
+                            <div key={sub.name}>
+                                <h4>{sub.name}</h4>
+                                <p>{sub.data.desc}</p>
+                                {sub.data.language_options ? (
+                                    <p>When choosing this subrace, you learn a language of your choice.</p>
+                                ) : null}
+                                {sub.data.ability_bonuses.length ? (
+                                    <div>
+                                        <p>Your {scoreTranslation[sub.data.ability_bonuses[0].ability_score.name]} increases by {sub.data.ability_bonuses[0].bonus}</p>
+                                    </div>
+                                ) : null}
+                            </div>
                         ))}
                     </div>
                 ) : null}
