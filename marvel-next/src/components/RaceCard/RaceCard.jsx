@@ -1,21 +1,20 @@
 "use client"
-import Link from "next/link"
-import { StyledDiv } from "./styledRCard"
+import { StyledDiv, RCLink } from "./styledRCard"
 import Image from "next/image";
 
 function RaceCard({data}) {
   return (
-    <Link href={`/races/${data.index}`}>
+    <RCLink href={`/races/${data.index}`}>
       <StyledDiv>
       <Image
           src={`/races/${data.index}.webp`}
           alt={data.name}
-          width={50}
-          height={80}
+          width={65}
+          height={100}
         />
         <h4>{data.name}</h4>
       </StyledDiv>
-    </Link>
+    </RCLink>
   )
 }
 

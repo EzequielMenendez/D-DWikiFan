@@ -15,7 +15,7 @@ export default async function Characters() {
     const data = await loadRaces()
     return(
         <StyledDiv>
-            <h3>Races</h3>
+            <h2>Races</h2>
             {data.map((d)=>(
                 <div key={d.index}>
                     <RaceCard data={d}/>
