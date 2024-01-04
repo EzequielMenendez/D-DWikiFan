@@ -18,6 +18,15 @@ const loadRace = async(index)=>{
             const subracesPromises = data.subraces.map(async (sub) => {
                 const response = await axios.get(`https://www.dnd5eapi.co${sub.url}`);
                 sub.data = response.data;
+                if(sub.data.racial_traits.length){
+                    const racialTraitProsises = sub.data.racial_traits.map(async(trait)=>{
+                        const response = await axios.get(`https://www.dnd5eapi.co${trait.url}`)
+                        trait.desc = response.data.desc[0]
+                        return
+                    })
+
+                    await Promise.all(racialTraitProsises)
+                }
                 return
             });
 
@@ -100,6 +109,14 @@ async function RaceDetail({params}) {
                                 {sub.data.ability_bonuses.length ? (
                                     <div>
                                         <p>Your {scoreTranslation[sub.data.ability_bonuses[0].ability_score.name]} increases by {sub.data.ability_bonuses[0].bonus}</p>
+                                    </div>
+                                ) : null}
+                                {sub.data.racial_traits.length ? (
+                                    <div>
+                                        <h5>Racial Traits</h5>
+                                        {sub.data.racial_traits.map(trait=>(
+                                            <p>{trait.name}: {trait.desc}</p>
+                                        ))}
                                     </div>
                                 ) : null}
                             </div>
