@@ -1,6 +1,10 @@
 import axios from "axios"
-import Image from "next/image"
-import { StyledDiv } from "./StyledDetailRace"
+import {
+    StyledDiv,
+    TextContainer,
+    ImageContainer,
+    StyledImage
+  } from "./StyledDetailRace";
 
 const loadRace = async(index)=>{
     try {
@@ -49,11 +53,10 @@ async function RaceDetail({params}) {
         WIS: 'Wisdom',
         CHA: 'Charisma'
     };
-
     
     return (
         <StyledDiv>
-            <div>
+            <TextContainer>
                 <h2>{race.name}</h2>
                 <h3>Alignment</h3>
                 <p>{race.alignment}</p>
@@ -96,16 +99,6 @@ async function RaceDetail({params}) {
                             <div key={sub.name}>
                                 <h4>{sub.name}</h4>
                                 <p>{sub.data.desc}</p>
-                                {sub.data.starting_proficiencies.length ? (
-                                    <div>
-                                        <h5>Starting Proficiencies</h5>
-                                        <ul>
-                                        {sub.data.starting_proficiencies.map(pro=>(
-                                            <li key={pro.index}>{pro.name}</li>
-                                        ))}
-                                        </ul>
-                                    </div>
-                                ) : null}
                                 {sub.data.ability_bonuses.length ? (
                                     <div>
                                         <p>Your {scoreTranslation[sub.data.ability_bonuses[0].ability_score.name]} increases by {sub.data.ability_bonuses[0].bonus}</p>
@@ -115,7 +108,7 @@ async function RaceDetail({params}) {
                                     <div>
                                         <h5>Racial Traits</h5>
                                         {sub.data.racial_traits.map(trait=>(
-                                            <p>{trait.name}: {trait.desc}</p>
+                                            <p key={trait.index}>{trait.name}: {trait.desc}</p>
                                         ))}
                                     </div>
                                 ) : null}
@@ -123,15 +116,15 @@ async function RaceDetail({params}) {
                         ))}
                     </div>
                 ) : null}
-            </div>
-            <div>
-                <Image
+            </TextContainer>
+            <ImageContainer>
+                <StyledImage
                     src={`/races/${race.index}.webp`}
                     alt={race.name}
                     width={300}
                     height={420}
                 />
-            </div>
+            </ImageContainer>
         </StyledDiv>
     )
 }
