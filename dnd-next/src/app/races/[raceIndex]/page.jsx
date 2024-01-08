@@ -36,6 +36,7 @@ const loadRace = async(index)=>{
 
             await Promise.all(subracesPromises);
         }
+
         return data
     } catch (error) {
         console.error(error.message)

@@ -1,6 +1,7 @@
 import RaceCard from "@/components/RaceCard/RaceCard"
 import axios from "axios"
 import { StyledDiv } from "./styledRaces"
+import { resolve } from "styled-jsx/css"
 
 const loadRaces = async() =>{
     try {
