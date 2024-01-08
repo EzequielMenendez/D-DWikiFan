@@ -1,8 +1,9 @@
 import React from 'react'
+import ComingSoon from '../comingSoon/comingSoon'
 
 function Spells() {
   return (
-    <div>Coming Soon...</div>
+    <ComingSoon/>
   )
 }
 

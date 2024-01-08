@@ -1,8 +1,9 @@
 import React from 'react'
+import ComingSoon from '../comingSoon/comingSoon'
 
 function Classes() {
   return (
-    <div>Coming soon...</div>
+    <ComingSoon/>
   )
 }
 
