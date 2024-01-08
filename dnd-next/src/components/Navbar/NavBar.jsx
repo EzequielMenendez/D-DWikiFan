@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { StyledNav, SLink } from "./styledNav"
 
 export default function Navbar() {
