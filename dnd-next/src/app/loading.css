@@ -17,8 +17,9 @@
   }
   
   .loaderText {
-    font-size: 2opx;
-    color: black;
+    z-index: 10;
+    font-size: 20px;
+    color: #ee0911;
     margin-bottom: 16px;
   }
   
@@ -30,6 +31,7 @@
   }
   
   .circle {
+    z-index: 10;
     border: 5px solid #f3f3f3;
     border-top: 6px solid #c71a1f;
     border-radius: 50%;
