@@ -6,9 +6,9 @@ export default function Navbar() {
         <h1>D&D Wiki</h1>
         <ul>
             <SLink href={'/races'}><li>Races</li></SLink>
-            <li>Classes</li>
-            <li>Spells</li>
-            <li>Monsters</li>
+            <SLink href={'/classes'}><li>Classes</li></SLink>
+            <SLink href={'/spells'}><li>Spells</li></SLink>
+            <SLink href={'/monsters'}><li>Monsters</li></SLink>
         </ul>
       </StyledNav>
     )
