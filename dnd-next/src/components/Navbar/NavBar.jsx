@@ -3,7 +3,7 @@ import { StyledNav, SLink } from "./styledNav"
 export default function Navbar() {
     return (
       <StyledNav>
-        <h1>D&D Wiki</h1>
+        <SLink href={'/'}><h1>D&D Wiki</h1></SLink>
         <ul>
             <SLink href={'/races'}><li>Races</li></SLink>
             <SLink href={'/classes'}><li>Classes</li></SLink>
