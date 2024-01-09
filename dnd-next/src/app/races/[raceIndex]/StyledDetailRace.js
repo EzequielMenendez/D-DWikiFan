@@ -15,6 +15,10 @@ export const StyledDiv = styled.div`
     align-items: center;
     max-width: 60vw;
   }
+
+  @media (max-width: 450px) {
+    min-width: 250px;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -24,6 +28,10 @@ export const TextContainer = styled.div`
 
   @media (max-width: 890px) {
     max-width: none;
+  }
+
+  @media (max-width: 450px) {
+    min-width: 250px;
   }
 
   p{
@@ -45,6 +53,9 @@ export const TextContainer = styled.div`
 export const ImageContainer = styled.div`
   min-width: 300px;
   max-width: 45%;
+  @media (max-width: 450px) {
+    min-width: 250px;
+  }
 `;
 
 export const StyledImage = styled(Image)`
