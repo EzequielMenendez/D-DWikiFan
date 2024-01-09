@@ -1,5 +1,5 @@
 import React from 'react'
-import ComingSoon from '../comingSoon/comingSoon'
+import ComingSoon from '../../components/comingSoon/comingSoon'
 
 function Monsters() {
   return (
